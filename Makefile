@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -std=c99 $(shell pkg-config --cflags gtk+-2.0)
 LIFLAGS= $(shell pkg-config --libs gtk+-2.0)
 SRC_DIR = src
 OBJ_DIR = bin
-OBJ_GUI = $(OBJ_DIR)/main.o $(OBJ_DIR)/client.o $(OBJ_DIR)/GUI.o $(OBJ_DIR)/server.o
+OBJ_GUI = $(OBJ_DIR)/main.o $(OBJ_DIR)/client.o $(OBJ_DIR)/GUI.o
 OBJ_SERVER =$(OBJ_DIR)/server.o
 all: gui server
 gui: $(OBJ_GUI)
