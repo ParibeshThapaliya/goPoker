@@ -18,7 +18,7 @@ int server_main(int argc, char *argv[]) {
     //     return 1;
     // }
 
-    int socket = create_server(atoi(9000));
+    int socket = create_server(9000);
 
     process_requests_with_loop(socket);
 
