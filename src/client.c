@@ -27,10 +27,10 @@ int client_main(int argc, char *argv[]) {
     struct hostent *server;
     struct sockaddr_in server_addr;
 
-    if (argc < 3) {
-        fprintf(stderr, "Error command line, please run like this: %s ip port\n", argv[0]);
-        return 1;
-    }
+    // if (argc < 3) {
+    //     fprintf(stderr, "Error command line, please run like this: %s ip port\n", argv[0]);
+    //     return 1;
+    // }
 
 #ifdef _WIN32
     WORD sockVersion = MAKEWORD(2, 2);

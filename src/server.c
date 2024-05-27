@@ -13,10 +13,10 @@ struct Client *g_clients = NULL;
 void process_requests_with_loop(int socket);
 
 int server_main(int argc, char *argv[]) {
-    if (argc < 2) {
-        fprintf(stderr, "Error command line, please run like this: %s port\n", argv[0]);
-        return 1;
-    }
+    // if (argc < 2) {
+    //     fprintf(stderr, "Error command line, please run like this: %s port\n", argv[0]);
+    //     return 1;
+    // }
 
     int socket = create_server(atoi(9000));
 
