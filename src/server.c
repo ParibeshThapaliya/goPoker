@@ -12,7 +12,7 @@ struct Client *g_clients = NULL;
 
 void process_requests_with_loop(int socket);
 
-void server_main(int argc, char *argv[]) {
+void main(int argc, char *argv[]) {
     // if (argc < 2) {
     //     fprintf(stderr, "Error command line, please run like this: %s port\n", argv[0]);
     //     return 1;
@@ -144,7 +144,7 @@ void process_requests_with_loop(int socket) {
     FD_ZERO(&rfds_bk);
     FD_SET(socket, &rfds_bk);
 
-    printf("Start loop %d\n", socket);
+    printf("Start loop %d, SERVER STARTED WAITING FOR CLIENT CONNECTION\n", socket);
 
     while (1) {
         rfds = rfds_bk;
