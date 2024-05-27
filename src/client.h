@@ -2,7 +2,7 @@
 #define CLIENT_H__
 
 #define MESSAGE_SIZE 4096
-
+void client_main();
 int g_socket; // Use this socket to communicate with server
 
 /**

@@ -3,7 +3,8 @@
 #include "GUI.h"
 
 int main(int argc, char *argv[]) {
-    server_main();
     client_main();
+    server_main();
+    
     return 0;
 }

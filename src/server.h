@@ -7,7 +7,7 @@ struct Client {
     char name[MAX_NAME_LEN];
     struct Client *next;
 };
-
+void server_main();
 extern struct Client *g_clients;
 
 /**
