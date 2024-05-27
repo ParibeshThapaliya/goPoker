@@ -1,34 +1,12 @@
 #include "client.h"
 #include "server.h"
-#include "GUI.h"
-#include <pthread.h>
-#include <stdio.h>
-void* server_thread(void* arg) {
-    server_main();
-    return NULL;
-}
+#include "gui.h"
 
-void* client_thread(void* arg) {
-    client_main();
-    return NULL;
-}
 int main(int argc, char *argv[]) {
-    pthread_t server_tid, client_tid;
-
+    // Call client_main, server_main, and gui_main as necessary
+    server_main();
+    client_main();
     
-    if (pthread_create(&server_tid, NULL, server_thread, NULL) != 0) {
-        fprintf(stderr, "Failed to create server thread\n");
-        return 1;
-    }
-
     
-    if (pthread_create(&client_tid, NULL, client_thread, NULL) != 0) {
-        fprintf(stderr, "Failed to create client thread\n");
-        return 1;
-    }
-
-    pthread_join(server_tid, NULL);
-    pthread_join(client_tid, NULL);
-
     return 0;
 }
