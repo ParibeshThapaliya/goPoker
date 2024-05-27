@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 $(shell pkg-config --cflags gtk+-4.0)
-LIFLAGS= $(shell pkg-config --libs gtk+-4.0)
+CFLAGS = -Wall -Wextra -std=c99 $(shell pkg-config --cflags gtk+-3.0)
+LIFLAGS= $(shell pkg-config --libs gtk+-3.0)
 SRC_DIR = src
 OBJ_DIR = bin
 OBJ = $(OBJ_DIR)/main.o $(OBJ_DIR)/client.o $(OBJ_DIR)/gui.o $(OBJ_DIR)/server.o
