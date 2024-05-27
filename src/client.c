@@ -23,7 +23,7 @@ typedef int SOCKET;
 void example();
 SOCKET g_socket;
 
-int client_main(int argc, char *argv[]) {
+void client_main(int argc, char *argv[]) {
     struct hostent *server;
     struct sockaddr_in server_addr;
 

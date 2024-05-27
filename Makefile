@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 $(shell pkg-config --cflags gtk+-2.0)
+CFLAGS = -pthread -Wall -Wextra -std=c99 $(shell pkg-config --cflags gtk+-2.0)
 LIFLAGS= $(shell pkg-config --libs gtk+-2.0)
 SRC_DIR = src
 OBJ_DIR = bin
