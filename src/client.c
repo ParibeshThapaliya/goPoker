@@ -18,7 +18,7 @@ typedef int SOCKET;
 #endif
 
 #include "client.h"
-#include "../GUI/GUI.h"
+#include "GUI.h"
 
 void example();
 SOCKET g_socket;
