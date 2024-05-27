@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 #include <ctype.h>
-
+#include <sys/select.h>
 #include "server.h"
 
 struct Client *g_clients = NULL;
