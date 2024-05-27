@@ -5,7 +5,7 @@ SRC_DIR = src
 OBJ_DIR = bin
 OBJ = $(OBJ_DIR)/main.o $(OBJ_DIR)/client.o $(OBJ_DIR)/gui.o $(OBJ_DIR)/server.o
 all: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(OBJ_DIR)/poker $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJ) -o $(OBJ_DIR)/poker $(LIFLAGS)
 $(OBJ_DIR)/main.o: $(SRC_DIR)/main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 $(OBJ_DIR)/client.o: $(SRC_DIR)/client.c $(SRC_DIR)/client.h
