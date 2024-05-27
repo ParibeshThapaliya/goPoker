@@ -1,6 +1,6 @@
 #include "client.h"
 #include "server.h"
-#include "gui.h"
+#include "GUI.h"
 
 int main(int argc, char *argv[]) {
     server_main();
