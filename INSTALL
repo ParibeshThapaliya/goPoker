@@ -1,0 +1,10 @@
+To install the files run the command: -
+tar -xvzf Poker_Alpha.tar.gz
+running this will extract all the necessary files.
+
+Once the files are extracted run the commands: -
+make all
+cd bin
+./poker-gui
+
+To make sure the client/socket connections are not violated ensure to follow the guidelines present in the User Manual in the doc directory
