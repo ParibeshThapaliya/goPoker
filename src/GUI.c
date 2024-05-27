@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <gtk/gtk.h>
-
 #include "GUI.h"
 
 // Global variables
@@ -12,13 +11,13 @@ GtkWidget *turncolor;
 GtkWidget *startbtn;
 GdkColor color;
 
-//Edges table
+// Edges table
 GtkWidget *TableTop;
 GtkWidget *TableBot;
 GtkWidget *TableLeft;
 GtkWidget *TableRight;
 
-//Inside table
+// Inside table
 GtkWidget *TopRightFourTwo;
 GtkWidget *BotRightFourTwo;
 GtkWidget *TopLeftFourTwo;
@@ -46,9 +45,11 @@ const char *GreenBox = "./assets/table/greenbox.png";
 void startbtnclicked(GtkWidget *widget, gpointer data);
 GtkWidget* create_image_widget(const char *filepath, int width, int height);
 
-int main(int argc, char *argv[]) {
-    gtk_init(&argc, &argv);
+void init_gui(int *argc, char ***argv) {
+    gtk_init(argc, argv);
+}
 
+GtkWidget* create_main_window(void) {
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     gtk_window_set_title(GTK_WINDOW(window), "Poker");
@@ -69,7 +70,7 @@ int main(int argc, char *argv[]) {
     gtk_table_attach(GTK_TABLE(table), startbtn, 15, 19, 8, 10, GTK_FILL, GTK_FILL, 0, 0);
     g_signal_connect(startbtn, "clicked", G_CALLBACK(startbtnclicked), NULL);
 
-    //Creating table edges
+    // Creating table edges
     TableTop = gtk_image_new_from_file("./assets/table/topleft.png");
     gtk_widget_set_size_request((GtkWidget *)TableTop, 650, 50);
     gtk_table_attach(GTK_TABLE(gametable), TableTop,  0, 13, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
@@ -83,7 +84,7 @@ int main(int argc, char *argv[]) {
     gtk_widget_set_size_request((GtkWidget *)TableRight, 50, 400);
     gtk_table_attach(GTK_TABLE(gametable), TableRight,  12, 13, 1, 9, GTK_FILL, GTK_FILL, 0, 0);
 
-    //Inner
+    // Inner
     TopRightFourTwo = gtk_image_new_from_file("./assets/table/2by4square.png");
     gtk_widget_set_size_request((GtkWidget *)TopRightFourTwo, 100, 200);
     BotRightFourTwo = gtk_image_new_from_file("./assets/table/2by4square.png");
@@ -121,11 +122,11 @@ int main(int argc, char *argv[]) {
     gtk_table_attach(GTK_TABLE(gametable), BotMiddle1,  5, 7, 7, 9, GTK_FILL, GTK_FILL, 0, 0);
     gtk_table_attach(GTK_TABLE(gametable), BotMiddle2,  7, 8, 7, 9, GTK_FILL, GTK_FILL, 0, 0);
 
-    //middle for cards
+    // Middle for cards
     MiniTop = gtk_image_new_from_file("./assets/table/5by1square.png");
     MiniBot = gtk_image_new_from_file("./assets/table/5by1square.png");
     MiniLeft = gtk_image_new_from_file("./assets/table/1by4square.png");
-    MiniRight =  gtk_image_new_from_file("./assets/table/1by4square.png");
+    MiniRight = gtk_image_new_from_file("./assets/table/1by4square.png");
     Middle1 = gtk_image_new_from_file("./assets/table/2by2square.png");
     Middle2 = gtk_image_new_from_file("./assets/table/2by2square.png");
     Middle3 = gtk_image_new_from_file("./assets/table/1by2square.png");
@@ -143,15 +144,11 @@ int main(int argc, char *argv[]) {
     gtk_table_attach(GTK_TABLE(gametable), Middle1,  4, 6, 4, 6, GTK_FILL, GTK_FILL, 0, 0);
     gtk_table_attach(GTK_TABLE(gametable), Middle2,  6, 8, 4, 6, GTK_FILL, GTK_FILL, 0, 0);
     gtk_table_attach(GTK_TABLE(gametable), Middle3,  8, 9, 4, 6, GTK_FILL, GTK_FILL, 0, 0);
-    gtk_table_attach(GTK_TABLE(table), gametable, 1, 14, 3, 20, GTK_FILL, GTK_FILL, 0,0);
+    gtk_table_attach(GTK_TABLE(table), gametable, 1, 14, 3, 20, GTK_FILL, GTK_FILL, 0, 0);
     gtk_container_add(GTK_CONTAINER(window), table);
     g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), G_OBJECT(window));
 
-    gtk_widget_show_all(window);
-
-    gtk_main();
-
-    return 0;
+    return window;
 }
 
 GtkWidget* create_image_widget(const char *filepath, int width, int height) {
@@ -166,9 +163,8 @@ GtkWidget* create_image_widget(const char *filepath, int width, int height) {
     return image;
 }
 
-//when start button clicked
+// When start button clicked
 void startbtnclicked(GtkWidget *widget, gpointer data) {
     gtk_widget_hide(startbtn);
     gtk_image_set_from_file(GTK_IMAGE(turncolor), GreenBox);
 }
-

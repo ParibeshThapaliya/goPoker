@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <WINDOWS.H>
-#include <ws2tcpip.h>
+#include <arpa/inet.h>
 #include <errno.h>
+#include <ctype.h>
 
 #include "server.h"
 
@@ -15,14 +15,6 @@ void process_requests_with_loop(int socket);
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         fprintf(stderr, "Error command line, please run like this: %s port\n", argv[0]);
-        return 1;
-    }
-
-    WORD sockVersion = MAKEWORD(2, 2);
-	WSADATA wsaData;
-    if (WSAStartup(sockVersion, &wsaData) != 0)
-	{
-        fprintf(stderr, "WSAStartup error\n");
         return 1;
     }
 

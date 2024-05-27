@@ -1,6 +1,8 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include <gtk/gtk.h>
+
 #define SQUARE_SIZE 100
 #define WINDOW_WIDTH (12*SQUARE_SIZE)
 #define WINDOW_HEIGHT (8*SQUARE_SIZE)
