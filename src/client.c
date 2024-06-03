@@ -22,7 +22,7 @@ typedef int SOCKET;
 
 void example();
 SOCKET g_socket;
-
+int clientnum=0;
 void client_main(int argc, char *argv[]) {
     struct hostent *server;
     struct sockaddr_in server_addr;
@@ -88,7 +88,10 @@ void client_main(int argc, char *argv[]) {
 
 void example() {
     char buffer[MESSAGE_SIZE];
-    strcpy(buffer, "ENTER Jane SEAT 1 PASSWORD secret");
+    char prebugger[MESSAGE_SIZE];
+    sprintf(prebugger,"ENTER CLient%d SEAT 1 PASSWORD secret",clientnum);
+    clientnum++;
+    strcpy(buffer, prebugger);
     int n = send_to_server(buffer, strlen(buffer));
     n = receive_from_server(buffer, MESSAGE_SIZE);
     printf("Get response %s\n", buffer);
