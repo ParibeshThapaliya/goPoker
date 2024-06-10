@@ -6,7 +6,7 @@
 #include <netdb.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-
+#define MAXCLIENT 5;
 int connectedClients;
 struct clientInfo
 {
@@ -24,10 +24,7 @@ int main(void)
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
     char himsg[] = "hello there player";
-    sendMessageToPlayer(0, himsg);
-     sendMessageToPlayer(1, himsg);
-    // sendMessageToPlayer(2, himsg);
-    // sendMessageToPlayer(3, himsg);
+    sendMessageToAllPlayers(himsg);
     close(s_socket);
 }
 
@@ -64,7 +61,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 int loadPlayers(int *sock)
 {
     int connectedClient = 0;
-    while (connectedClient < 2)
+    while (connectedClient < 3)
     {
         int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
@@ -99,4 +96,11 @@ void receiveMessageFromPlayer(int playerIndex, char *msg)
         return;
     }
     msg[bytes] = '\0';
+}
+sendMessageToAllPlayers(char *msg)
+{
+    for (int i = 0; i < connectedClients; i++)
+    {
+        sendMessageToPlayer(i, *msg);
+    }
 }
