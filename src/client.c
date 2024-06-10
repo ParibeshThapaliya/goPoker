@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     int g_socket, connet_status;
     struct sockaddr_in server_adress;
     char message[4096];
-    struct pollfd[2];
+    struct pollfd fds[2];
 
     if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
     {
