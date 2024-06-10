@@ -64,7 +64,7 @@ int loadPlayers(int *sock)
 
         int bytes;
 
-        bytes = recv(*temp_socket, players[connectedClient].name, sizeof(players[connectedClient].name), 0);
+        bytes = recv(temp_socket, players[connectedClient].name, sizeof(players[connectedClient].name), 0);
         printf(players[connectedClient].name);
         printf("client :%d connected", connectedClient + 1);
         connectedClient++;
