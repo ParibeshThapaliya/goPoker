@@ -9,7 +9,7 @@
 #define WINDOW_BORDER 10
 
 // initialize gtk application
-void init_gui(int *argc, char ***argv, GtkWidget *main_window);
+void init_gui( GtkWidget **main_window);
 enum GameState
 {
     MENU,
