@@ -23,8 +23,11 @@ int main(void)
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
-    char himsg[] = "hello there player 1";
+    char himsg[] = "hello there player";
     sendMessageToPlayer(0, himsg);
+    sendMessageToPlayer(1, himsg);
+    sendMessageToPlayer(2, himsg);
+    sendMessageToPlayer(3, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -60,7 +63,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 int loadPlayers(int *sock)
 {
     int connectedClient = 0;
-    while (connectedClient < 8)
+    while (connectedClient < 4)
     {
         int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
