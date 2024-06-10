@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
     receiveServerMsg(&g_socket, message);
     printf("Received from server: %s\n", message);
     close(g_socket);
+    return 0;
 }
 int intializeMenu()
 {

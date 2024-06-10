@@ -16,6 +16,13 @@ enum GameState
     GAME
 };
 void load_image(GtkWidget *window, char *file);
+struct Player
+{
+    GtkWidget *Player_Name;
+    GtkWidget *playerCurrentBet;
+    GtkWidget *player_hand;
+    GtkWidget *playerPot;
+};
 struct MENUSCENE
 {
     GtkWidget *name_feild;
@@ -27,13 +34,6 @@ struct GAMESCENE
     GtkWidget *poker_table;
     struct Player Players[4];
     GtkWidget *common_cards;
-};
-struct Player
-{
-    GtkWidget *Player_Name;
-    GtkWidget *playerCurrentBet;
-    GtkWidget *player_hand;
-    GtkWidget *playerPot;
 };
 
 #endif // GUI_H
