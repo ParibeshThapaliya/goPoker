@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     struct sockaddr_in server_adress;
     char message[4096];
     GtkWidget *main_window;
-    init_gui(&argc, &argv, main_window);
+    init_gui(&argc, &argv, &main_window);
     load_image(main_window, "../assets/pokertable.png");
     gtk_widget_show_all(main_window);
     gtk_main();
