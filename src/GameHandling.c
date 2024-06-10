@@ -1,6 +1,5 @@
 #include "Structures.h"
 #include "GameHandling.h"
-#include "constants.h"
 #include "time.h"
 
 void shuffleDeck(Card deck[52]) {
