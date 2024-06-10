@@ -12,7 +12,6 @@
 #include "Structures.h"
 #include "GameHandling.h"
 #include "CheckWin.h"
-#include "constants.h"
 #include "GUI.h"
 char name[16];
 
