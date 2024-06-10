@@ -23,8 +23,8 @@ int main(void)
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
-    // char himsg[] = "hello there player 1";
-    // sendMessageToPlayer(0, himsg);
+     char himsg[] = "hello there player 1";
+     sendMessageToPlayer(0, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
