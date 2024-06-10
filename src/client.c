@@ -13,7 +13,7 @@
 #include "GameHandling.h"
 #include "CheckWin.h"
 #include "constants.h"
-#include"GUI.h"
+#include "GUI.h"
 char name[16];
 
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);
@@ -83,11 +83,11 @@ int receiveServerMsg(int *sock, char *serverResponse)
     return 0;
 }
 
-int sendServerMsg(int *sock,  char *clientResponse)
+int sendServerMsg(int *sock, char *clientResponse)
 {
     size_t sendSize;
     sendSize = send(*sock, clientResponse, sizeof(clientResponse), 0);
-    if (sendSize < 0)
+    if (sendSize == -1)
     {
         printf("failed to send");
         return -1;
