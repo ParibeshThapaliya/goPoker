@@ -22,6 +22,8 @@ int main()
     int s_socket, bind_socket;
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
+    loadPlayers(&s_socket);
+    
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -62,7 +64,9 @@ int loadPlayers(int *sock)
         int temp_socket = accept(sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
         printf("client :%d connected", connectedClient + 1);
+        int bytes;
 
+        bytes = recv(*sock, players[connectedClient].name, sizeof(players[connectedClient].name), 0);
         connectedClient++;
     }
     printf("all players sucessfully loadedin");
