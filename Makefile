@@ -33,7 +33,7 @@ $(OBJ_DIR)/CheckWin.o: $(SRC_DIR)/CheckWin.c $(SRC_DIR)/CheckWin.h $(SRC_DIR)/St
 	$(CC) $(CFLAGS) -c $< -o $@
 
 tar:
-	tar -czvf Poker_Alpha_src.tar.gz README INSTALL COPYRIGHT bin doc src Makefile
+	tar -czvf Poker V1.0_src.tar.gz README INSTALL COPYRIGHT bin doc src Makefile
 
 test-gui:
 	./bin/poker-gui $(NAME)
