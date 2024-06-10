@@ -85,6 +85,6 @@ void sendMessageToPlayer(int player, const char *msg)
     }
     else
     {
-        printf("Message sent to player %d: %s\n", player, message);
+        printf("Message sent to player %d: %s\n", player, msg);
     }
 }
