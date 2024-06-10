@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 int MAXCLIENT = 5;
-int connectedClients;
+int connectedClients = 0;
 struct clientInfo
 {
     int socket;
@@ -79,7 +79,7 @@ int loadPlayers(int *sock)
 void sendMessageToPlayer(int playerIndex, char *msg)
 {
     int player_socket = players[playerIndex].socket;
-    int bytes = send(player_socket, msg, sizeof(msg), 0);
+    int bytes = send(player_socket, msg, strlen(msg), 0);
     if (bytes < 0)
     {
         printf("Failed to send message to  %d\n", playerIndex);
