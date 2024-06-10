@@ -25,7 +25,7 @@ struct MENUSCENE
 struct GAMESCENE
 {
     GtkWidget *poker_table;
-    player Players[4];
+    struct Player Players[4];
     GtkWidget *common_cards;
 };
 struct Player
@@ -33,7 +33,6 @@ struct Player
     GtkWidget *Player_Name;
     GtkWidget *playerCurrentBet;
     GtkWidget *player_hand;
-    GtkWidget *playerPot;
     GtkWidget *playerPot;
 };
 
