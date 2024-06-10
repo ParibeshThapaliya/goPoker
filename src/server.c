@@ -6,7 +6,7 @@
 #include <netdb.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-int MAXCLIENT 5;
+int MAXCLIENT = 5;
 int connectedClients;
 struct clientInfo
 {
@@ -97,10 +97,10 @@ void receiveMessageFromPlayer(int playerIndex, char *msg)
     }
     msg[bytes] = '\0';
 }
-sendMessageToAllPlayers(char *msg)
+void sendMessageToAllPlayers(char *msg)
 {
     for (int i = 0; i < connectedClients; i++)
     {
-        sendMessageToPlayer(i, *msg);
+        sendMessageToPlayer(i, msg);
     }
 }
