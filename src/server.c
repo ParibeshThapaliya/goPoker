@@ -62,7 +62,8 @@ int loadPlayers(int *sock)
         int temp_socket = accept(sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
         printf("client :%d connected", connectedClient + 1);
+
         connectedClient++;
     }
-    printf("all players sucessfully loadedin")
+    printf("all players sucessfully loadedin");
 }
