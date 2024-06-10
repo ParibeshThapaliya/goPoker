@@ -77,7 +77,7 @@ int receiveServerMsg(int *sock, char *serverResponse)
     return 0;
 }
 
-int sendServerMsg(int *sock, const char *clientResponse)
+int sendServerMsg(int *sock,  char *clientResponse)
 {
     size_t sendSize;
     sendSize = send(*sock, clientResponse, sizeof(clientResponse), 0);

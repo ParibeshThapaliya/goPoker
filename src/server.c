@@ -75,7 +75,7 @@ int loadPlayers(int *sock)
     }
     printf("all players sucessfully loaded in");
 }
-void sendMessageToPlayer(int playerIndex, const char *msg)
+void sendMessageToPlayer(int playerIndex, char *msg)
 {
     int player_socket = players[playerIndex].socket;
     int bytes = send(player_socket, msg, sizeof(msg), 0);
