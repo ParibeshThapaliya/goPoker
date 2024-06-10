@@ -23,7 +23,7 @@ $(OBJ_DIR)/client.o: $(SRC_DIR)/client.c $(SRC_DIR)/Structures.h $(SRC_DIR)/Game
 $(OBJ_DIR)/server.o: $(SRC_DIR)/server.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/GUI.o: $(SRC_DIR)/GUI.c $(SRC_DIR)/GUI.h $(SRC_DIR)/client.h
+$(OBJ_DIR)/GUI.o: $(SRC_DIR)/GUI.c $(SRC_DIR)/GUI.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/GameHandling.o: $(SRC_DIR)/GameHandling.c $(SRC_DIR)/GameHandling.h $(SRC_DIR)/Structures.h
