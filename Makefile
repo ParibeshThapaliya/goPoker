@@ -17,7 +17,7 @@ server: $(OBJ_SERVER)
 $(OBJ_DIR)/structures.o: $(SRC_DIR)/Structures.c $(SRC_DIR)/Structures.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/client.o: $(SRC_DIR)/client.c $(SRC_DIR)/Structures.h $(SRC_DIR)/GameHandling.h $(SRC_DIR)/CheckWin.h $(SRC_DIR)/constants.h $(SRC_DIR)/GUI.h
+$(OBJ_DIR)/client.o: $(SRC_DIR)/client.c $(SRC_DIR)/Structures.h $(SRC_DIR)/GameHandling.h $(SRC_DIR)/CheckWin.h $(SRC_DIR)/GUI.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/server.o: $(SRC_DIR)/server.c
