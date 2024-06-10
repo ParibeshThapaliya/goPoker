@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         printf("failed to initialize connection to the server ");
         return -1;
     }
-    receiveServerMsg(&g_socket, message, sizeof(message));
+    receiveServerMsg(&g_socket, message);
     printf("Received from server: %s\n", message);
     close(g_socket);
 }
