@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 int MAXCLIENT = 2;
-int connectedClients = 0;
+int connectedClient;
 struct clientInfo
 {
     int socket;
@@ -50,7 +50,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
         close(*sock);
         return -1;
     }
-    if (listen(*sock, MAXCLIENT) < 0)
+    if (listen(*sock, 5) < 0)
     {
         printf("Listen failed\n");
         close(*sock);
@@ -61,7 +61,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 }
 int loadPlayers(int *sock)
 {
-    int connectedClient = 0;
+    connectedClient=0;
     while (connectedClient < MAXCLIENT)
     {
         int temp_socket = accept(*sock, NULL, NULL);
