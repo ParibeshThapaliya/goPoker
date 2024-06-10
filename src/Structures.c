@@ -1,3 +1,5 @@
+#include "Structures.h"
+#include "constants.h"
 Card* createCard(SUIT suit, RANK rank) {
     Card* card = (Card*)malloc(sizeof(Card));
     card->suit = suit;
@@ -11,9 +13,6 @@ void deleteCard(Card* card) {
 
 void initializeDeck(Card deck[52]) {
     int i = 0;
-    for(int i=0; i<52; i++){
-        deck[i] = createCard(TWO, CLUBS);
-    }
     for (SUIT suit = CLUBS; suit <= SPADES; suit++) {
         for (RANK rank = TWO; rank <= ACE; rank++) {
             deck[i].suit = suit;
@@ -49,4 +48,4 @@ void initializePlayers(Player playersList[], int numPlayers) {
         playersList[i].status = 1; // Active status
         playersList[i].hand = NONE;
     }
-}12
+}

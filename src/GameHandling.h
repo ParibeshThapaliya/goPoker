@@ -1,8 +1,16 @@
 //This file is created for all the functions that are used to ensure the game runs
+#ifndef GAMEHANDLING_H
+#define GAMEHANDLING_H
 
-#include "constants.h"
-void shuffleDeck(struct Card deck[52]);
+#include "Structures.h"
+void shuffleDeck(Card deck[52]);
 
-void dealCards(struct Card deck[52], struct Player playersList[10]);
+void dealCards(Card deck[52], Player playersList[10]);
 
-void handlePlayerMove(Player* player, ACTION action, int raiseAmount, int betAmount);
+int handlePlayerMove(int pos, ACTION action, int raiseAmount, int betAmount);
+
+void printCommunityCards(Card *communityCards, int numCards);
+void printHand(Player playersList[10]);
+
+int GameEnd();
+#endif

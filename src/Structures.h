@@ -1,6 +1,15 @@
 //This file has the headers for the caard and player structuees
-#include<constants.h>
+
 //Data structures
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
+
+
+typedef enum {TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE} RANK;
+typedef enum {CLUBS, DIAMONDS, HEARTS, SPADES} SUIT;
+typedef enum {NONE, HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush} HAND;
+typedef enum {CHECK, RAISE, FOLD, CALL} ACTION;
+
 typedef struct {
     SUIT suit;
     RANK rank;
@@ -33,8 +42,8 @@ void deleteCard(Card* card);
 
 void initializeDeck(Card deck[52]);
 
-Player* createPlayer(const char* name, int points, int seat, int socket);
-
 void deletePlayer(Player* player);
 
 void initializePlayers(Player playersList[], int numPlayers);
+
+#endif  

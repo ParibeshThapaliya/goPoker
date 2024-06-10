@@ -8,6 +8,12 @@
 #include <netinet/in.h>
 #include <poll.h>
 #include <string.h>
+
+#include "Structures.h"
+#include "GameHandling.h"
+#include "CheckWin.h"
+#include "constants.h"
+#include"GUI.h"
 char name[16];
 
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);

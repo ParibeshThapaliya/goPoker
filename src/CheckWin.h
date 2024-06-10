@@ -1,7 +1,23 @@
-void checkHands(struct Player playersList[10], struct Card boardCards[5]);
+#ifndef CHECKWIN_H
+#define CHECKWIN_H
 
-void checkWinner(struct Player playersList[10]);
+#include "constants.h"
+#include "Structures.h"
+void checkHands(Player playersList[10], Card *boardCards);
 
-bool isFlush(struct Card checkBoard[7]);
+int compareHighCard(Card *player1, Card *player2);
+void checkWinner(Player playersList[10], Card *communityCards);
 
-bool isStraight(struct Card checkBoard[7]);
+bool isFlush(Card *cards, int numCards);
+
+bool isStraight(Card *cards, int numCards);
+
+int compareCards(const void *a, const void *b);
+
+int isRoyalFlush(Card *cards, int numCards); 
+
+int isStraightFlush(Card *cards, int numCards);
+ 
+int checkStraightOrRoyalFlush(Card *cards, int numCards);
+
+#endif 

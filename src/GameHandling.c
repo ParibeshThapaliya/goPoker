@@ -1,6 +1,10 @@
-#include<Structures.h>
+#include "Structures.h"
+#include "GameHandling.h"
+#include "constants.h"
+#include "time.h"
 
 void shuffleDeck(Card deck[52]) {
+    srand(time(NULL));
     for (int i = 0; i < 52; i++) {
         int r = rand() % 52;
         Card temp = deck[i];
@@ -20,40 +24,78 @@ void dealCards(Card deck[52], Player playersList[10]) {
     }
 }
 
-void handlePlayerMove(Player* player, ACTION action, int raiseAmount, int betAmount) {
+void printHand(Player playersList[10]){
+	for(int i = 0;i<10; i++){
+		printf("%s has the following hand %d %d, %d %d.\n", playersList[i].name, (playersList[i].handCards[0].rank), (playersList[i].handCards[0].suit), (playersList[i].handCards[1].rank), (playersList[i].handCards[1].suit));
+	}
+}
+
+void printCommunityCards(Card *communityCards, int numCards){
+	for(int i=0; i<numCards; i++){
+		
+			printf("%d %d\t", communityCards[i].rank, communityCards[i].suit);
+		
+	}
+	printf("\n\n");
+}
+int handlePlayerMove(int pos, ACTION action, int raiseAmount, int betAmount) {
     switch (action) {
         case CHECK:
             if(betAmount>0){
                 printf("Cannot check when there is an ongoing bet of %d.\n", betAmount);
-                break;
+                return 0;
             }
-            printf("%s checks.\n", player->name);
+            printf("%s checks.\n", PlayersList[pos].name);
             // Implement logic for check if necessary
             break;
+
         case RAISE:
-            if (raiseAmount > player->points) {
-                printf("%s cannot raise by %d points, not enough points.\n", player->name, raiseAmount);
-                break;
+            if (raiseAmount > PlayersList[pos].points) {
+		//ALL IN
+                printf("%s, you cannot raise more than you have\n", PlayersList[pos].name);
+                return 0;
             }
-            player->points -= raiseAmount;
-            printf("%s raises by %d points. Remaining points: %d\n", player->name, raiseAmount, player->points);
+            PlayersList[pos].points -= raiseAmount;
+	    pot += raiseAmount;
+            printf("%s raises by %d points. Remaining points: %d\n", PlayersList[pos].name, raiseAmount, PlayersList[pos].points);
             // Implement logic to handle the raise in the game context
             break;
         case FOLD:
-            player->status = 0; // Set status to folded
-            printf("%s folds.\n", player->name);
+            PlayersList[pos].status = 0; // Set status to folded
+            printf("%s folds.\n", PlayersList[pos].name);
             // Implement logic to handle fold if necessary
             break;
         case CALL:
-            if(betAmount > player->points){
-                //all in we need to handle that
+            if(betAmount > PlayersList[pos].points){
+                pot += PlayersList[pos].points;
+		PlayersList[pos].points = 0;
             }
             else{
-                player->points -= betAmount;
-                printf("%s calls.\n", player->name);
+                PlayersList[pos].points -= betAmount;
+                printf("%s calls. Remaining points are %d\n", PlayersList[pos].name, PlayersList[pos].points);
             }
+	    break;
         default:
             printf("Invalid action.\n");
-            break;
+	    return 0;
     }
+    return 1;
+}
+
+int GameEnd(){
+	int count = 0;
+	for(int i=0; i<10; i++){
+		if(PlayersList[i].status == 1){
+			count++;
+		}
+		else{
+			continue;
+		}
+	}
+	if(count<=1){
+		return 1;
+	}
+	else{
+		return 0;
+	}
 }

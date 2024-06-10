@@ -59,6 +59,10 @@
   "C_Cpp.errorSquiggles": "disabled",
   "files.associations": {
     "unistd.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "gamehandling.h": "c",
+    "types.h": "c",
+    "structures.h": "c",
+    "checkwin.h": "c"
   }
 }
