@@ -13,9 +13,9 @@ void load_image(GtkWidget *window, char *file)
     image = gtk_image_new_from_file(file);
     gtk_container_add(GTK_CONTAINER(window), image);
 }
-init_gui(int *argc, char **argv, GtkWidget **main_window)
+void init_gui(GtkWidget **main_window)
 {
-    gtk_init(&argc, &argv);
+    gtk_init(NULL, NULL);
     *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(*main_window), "Poker");
     gtk_window_set_default_size(GTK_WINDOW(*main_window), WINDOW_WIDTH, WINDOW_HEIGHT);
