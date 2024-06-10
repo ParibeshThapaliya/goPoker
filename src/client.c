@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <poll.h>
+#include <string.h>
 char name[16];
 
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);
@@ -14,6 +15,7 @@ int receiveServerMsg(int *sock, char *serverResponse, size_t responseSize);
 int sendServerMsg(int *sock, char *clientResponse, size_t responseSize);
 int main(int argc, char *argv[])
 {
+    strcpy(name, argv[1]);
     int connectStatus;
     int g_socket, connet_status;
     struct sockaddr_in server_adress;
@@ -47,7 +49,7 @@ int main(int argc, char *argv[])
 
         if (fds[0].revents & POLLIN)
         {
-            if (receiveServerMsg(&g_socket, message, sizeof(message)) == 0)
+            if (receiveServerMsg(&g_socket, message, sizeof(message)) > 0)
             {
                 printf("Received from server: %s\n", message);
             }
@@ -88,7 +90,7 @@ int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
     }
     else
     {
-        char name[] = "name1";
+       // char name[] = "name1";
         sendServerMsg(sock, name, sizeof(name));
     }
     return 0;
