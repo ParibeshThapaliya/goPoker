@@ -31,26 +31,27 @@ int main(int argc, char *argv[])
 
     GtkWidget *window;
     GtkWidget *button;
-
-    gtk_init(&argc, &argv);
+    GtkWidget *BG
+        gtk_init(&argc, &argv);
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
     gtk_container_set_border_width(GTK_CONTAINER(window), 500);
-
+    load_image(BG, "../assets/pokertable.png");
     button = gtk_button_new_with_label("Click Me!");
-    gtk_container_add(GTK_CONTAINER(window), button);
+    gtk_container_add(GTK_CONTAINER(window), BG, button);
     gtk_widget_show_all(window);
+
+    // if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
+    // {
+    //     printf("failed to initialize connection to the server ");
+    //     return -1;
+    // }
+    // receiveServerMsg(&g_socket, message);
+    // printf("Received from server: %s\n", message);
     gtk_main();
 
-    if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
-    {
-        printf("failed to initialize connection to the server ");
-        return -1;
-    }
-    receiveServerMsg(&g_socket, message);
-    printf("Received from server: %s\n", message);
     close(g_socket);
     return 0;
 }
