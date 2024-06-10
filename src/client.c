@@ -12,7 +12,7 @@ char name[16];
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);
 int receiveServerMsg(int *sock, char *serverResponse, size_t responseSize);
 int sendServerMsg(int *sock, char *clientResponse, size_t responseSize);
-int main()
+int main(int argc, char *argv[])
 {
     int connectStatus;
     int g_socket, connet_status;
