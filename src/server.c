@@ -6,7 +6,7 @@
 #include <netdb.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-int MAXCLIENT = 5;
+int MAXCLIENT = 2;
 int connectedClients = 0;
 struct clientInfo
 {
