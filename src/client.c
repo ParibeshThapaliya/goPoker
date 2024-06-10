@@ -25,25 +25,36 @@ int main(int argc, char *argv[])
     int g_socket, connet_status;
     struct sockaddr_in server_adress;
     char message[4096];
-    // GtkWidget *main_window;
-    // gtk_init(argc, argv);
-    // main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    // gtk_window_set_title(GTK_WINDOW(main_window), "Poker");
-    // gtk_window_set_default_size(GTK_WINDOW(main_window), WINDOW_WIDTH, WINDOW_HEIGHT);
-    // gtk_container_set_border_width(GTK_CONTAINER(main_window), 10);
-    // g_signal_connect(main_window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    // load_image(main_window, "../assets/pokertable.png");
-    // gtk_widget_show_all(&main_window);
-    // gtk_main();
-    if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
-    {
-        printf("failed to initialize connection to the server ");
-        return -1;
-    }
-    receiveServerMsg(&g_socket, message);
-    printf("Received from server: %s\n", message);
-    close(g_socket);
+
+    GtkWidget *window;
+    GtkWidget *button;
+
+    gtk_init(&argc, &argv);
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+
+    g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
+
+    gtk_container_set_border_width(GTK_CONTAINER(window), WINDOW_SIZE);
+
+    button = gtk_button_new_with_label("Click Me!");
+
+    g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(welcome), "button");
+
+    gtk_container_add(GTK_CONTAINER(window), button);
+    gtk_widget_show_all(window);
+    gtk_main();
+
     return 0;
+}
+if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
+{
+    printf("failed to initialize connection to the server ");
+    return -1;
+}
+receiveServerMsg(&g_socket, message);
+printf("Received from server: %s\n", message);
+close(g_socket);
+return 0;
 }
 int intializeMenu()
 {
