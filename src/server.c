@@ -25,9 +25,9 @@ int main(void)
     loadPlayers(&s_socket);
     char himsg[] = "hello there player";
     sendMessageToPlayer(0, himsg);
-    sendMessageToPlayer(1, himsg);
-    sendMessageToPlayer(2, himsg);
-    sendMessageToPlayer(3, himsg);
+    // sendMessageToPlayer(1, himsg);
+    // sendMessageToPlayer(2, himsg);
+    // sendMessageToPlayer(3, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -63,7 +63,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 int loadPlayers(int *sock)
 {
     int connectedClient = 0;
-    while (connectedClient < 4)
+    while (connectedClient < 2)
     {
         int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
