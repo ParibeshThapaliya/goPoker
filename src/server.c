@@ -100,7 +100,7 @@ void receiveMessageFromPlayer(int playerIndex, char *msg)
 }
 void sendMessageToAllPlayers(char *msg)
 {
-    for (int i = 0; i < connectedClients; i++)
+    for (int i = 0; i < connectedClient; i++)
     {
         sendMessageToPlayer(i, msg);
     }
