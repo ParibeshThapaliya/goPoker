@@ -49,7 +49,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
         close(*sock);
         return -1;
     }
-    if (listen(*sock, 8) < 0)
+    if (listen(*sock, MAXCLIENT) < 0)
     {
         printf("Listen failed\n");
         close(*sock);
@@ -61,7 +61,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 int loadPlayers(int *sock)
 {
     int connectedClient = 0;
-    while (connectedClient < 3)
+    while (connectedClient < MAXCLIENT)
     {
         int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
