@@ -1,5 +1,6 @@
 //This file is created for all the functions that are used to ensure the game runs
 
+#include "constants.h"
 void shuffleDeck(struct Card deck[52]);
 
 void dealCards(struct Card deck[52], struct Player playersList[10]);

@@ -1,5 +1,5 @@
 //This file has the headers for the caard and player structuees
-
+#include<constants.h>
 //Data structures
 typedef struct {
     SUIT suit;
