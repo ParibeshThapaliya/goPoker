@@ -1,4 +1,3 @@
-#include <"structures.h">
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,7 +22,6 @@ int main()
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
-    
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -61,7 +59,7 @@ int loadPlayers(int *sock)
     int connectedClient = 0;
     while (connectedClient < sizeof(players))
     {
-        int temp_socket = accept(sock, NULL, NULL);
+        int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
         printf("client :%d connected", connectedClient + 1);
         int bytes;
