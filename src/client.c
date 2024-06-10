@@ -92,7 +92,7 @@ int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
 {
     int bytes;
 
-    bytes = recv(&sock, serverResponse, responsesize - 1, 0);
+    bytes = recv(*sock, serverResponse, responsesize - 1, 0);
     if (bytes < 0)
     {
         printf("receive failed");
@@ -105,7 +105,7 @@ int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
 int sendServerMsg(int *sock, char *clientResponse, size_t responsesize)
 {
     size_t sendSize;
-    sendSize = send(&sock, clientResponse, responsesize, 0);
+    sendSize = send(*sock, clientResponse, responsesize, 0);
     if (sendSize < 0)
     {
         printf("failed to send");
