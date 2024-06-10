@@ -14,7 +14,10 @@
 #include "CheckWin.h"
 #include "GUI.h"
 char name[16];
-
+static void destroy(GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);
 int receiveServerMsg(int *sock, char *serverResponse);
 int sendServerMsg(int *sock, char *clientResponse);

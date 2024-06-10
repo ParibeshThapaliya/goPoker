@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "GUI.h"
-static void destroy(GtkWidget *widget, gpointer data)
-{
-    gtk_main_quit();
-}
 
 void load_image(GtkWidget *window, char *file)
 {

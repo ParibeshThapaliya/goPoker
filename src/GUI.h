@@ -7,7 +7,7 @@
 #define WINDOW_WIDTH (12 * SQUARE_SIZE)
 #define WINDOW_HEIGHT (8 * SQUARE_SIZE)
 #define WINDOW_BORDER 10
- void destroy(GtkWidget *widget, gpointer data);
+ static void destroy(GtkWidget *widget, gpointer data);
 
 // initialize gtk application
 void init_gui( GtkWidget **main_window);
