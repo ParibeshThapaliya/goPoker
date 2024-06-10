@@ -36,7 +36,7 @@ tar:
 	tar -czvf Poker_Alpha_src.tar.gz README INSTALL COPYRIGHT bin doc src Makefile
 
 test-gui:
-	./bin/poker-gui
+	./bin/poker-gui $(NAME)
 
 clean:
 	rm -f $(OBJ_DIR)/poker-gui $(OBJ_DIR)/poker-server $(OBJ_DIR)/*.o
