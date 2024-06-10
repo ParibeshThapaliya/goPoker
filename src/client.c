@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
     int g_socket, connet_status;
     struct sockaddr_in server_adress;
     char message[4096];
+    GtkWidget *main_window;
+    init_gui(&argc, &argv, main_window);
+    load_image(main_window, "../assets/pokertable.png");
+    gtk_widget_show_all(main_window);
+    gtk_main();
     if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
     {
         printf("failed to initialize connection to the server ");
@@ -35,7 +40,9 @@ int main(int argc, char *argv[])
     printf("Received from server: %s\n", message);
     close(g_socket);
 }
-
+int intializeMenu()
+{
+}
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
 {
     *sock = socket(AF_INET, SOCK_STREAM, 0);

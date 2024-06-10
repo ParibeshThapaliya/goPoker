@@ -1,7 +1,6 @@
 #ifndef CHECKWIN_H
 #define CHECKWIN_H
 
-#include "constants.h"
 #include "Structures.h"
 void checkHands(Player playersList[10], Card *boardCards);
 

@@ -63,6 +63,8 @@
     "gamehandling.h": "c",
     "types.h": "c",
     "structures.h": "c",
-    "checkwin.h": "c"
+    "checkwin.h": "c",
+    "string.h": "c",
+    "gui.h": "c"
   }
 }

@@ -1,5 +1,4 @@
 #include "Structures.h"
-#include "constants.h"
 Card* createCard(SUIT suit, RANK rank) {
     Card* card = (Card*)malloc(sizeof(Card));
     card->suit = suit;
