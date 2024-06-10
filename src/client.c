@@ -86,6 +86,10 @@ int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
         close(*sock);
         return -1;
     }
+    else
+    {
+        char name[] = "name1" sendServerMsg(sock, name, sizeof(name));
+    }
     return 0;
 }
 int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
