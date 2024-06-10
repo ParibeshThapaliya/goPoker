@@ -16,7 +16,7 @@ struct clientInfo
 struct clientInfo players[8];
 int loadPlayers(int *sock);
 int openServer(int *sock, struct sockaddr_in *sin, int *bs);
-void sendMessageToPlayer(int player, const char *message);
+void sendMessageToPlayer(int player, char *message);
 int main(void)
 {
     int s_socket, bind_socket;
