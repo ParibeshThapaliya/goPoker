@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-        int poll_count = poll(fds, 1, 1000); // Poll with a timeout of 1000ms
+        int poll_count = poll(fds, 1, 10000); // Poll with a timeout of 1000ms
 
         if (poll_count == -1)
         {
