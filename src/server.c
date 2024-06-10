@@ -23,8 +23,8 @@ int main(void)
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
-     char himsg[] = "hello there player 1";
-     sendMessageToPlayer(0, himsg);
+    char himsg[] = "hello there player 1";
+    sendMessageToPlayer(0, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -60,7 +60,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 int loadPlayers(int *sock)
 {
     int connectedClient = 0;
-    while (connectedClient < 2)
+    while (connectedClient < 8)
     {
         int temp_socket = accept(*sock, NULL, NULL);
         players[connectedClient].socket = temp_socket;
@@ -75,16 +75,24 @@ int loadPlayers(int *sock)
     }
     printf("all players sucessfully loaded in");
 }
-void sendMessageToPlayer(int player, const char *msg)
+void sendMessageToPlayer(int playerIndex, const char *msg)
 {
-    int player_socket = players[player].socket;
-    int bytes = send(player_socket, msg, strlen(msg), 0);
+    int player_socket = players[playerIndex].socket;
+    int bytes = send(player_socket, msg, sizeof(msg), 0);
     if (bytes < 0)
     {
-        printf("Failed to send message to player %d\n", player);
+        printf("Failed to send message to  %d\n", playerIndex);
     }
-    else
+}
+void receiveMessageFromPlayer(int playerIndex, char *msg)
+{
+
+    int bytes;
+    bytes = recv(players[playerIndex].socket, msg, sizeof(msg) - 1, 0);
+    if (bytes < 0)
     {
-        printf("Message sent to player %d: %s\n", player, msg);
+        printf("receive failed");
+        return;
     }
+    msg[bytes] = '\0';
 }

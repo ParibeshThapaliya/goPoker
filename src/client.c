@@ -11,8 +11,8 @@
 char name[16];
 
 int openConnection(int *sock, struct sockaddr_in *sin, int *cs);
-int receiveServerMsg(int *sock, char *serverResponse, size_t responseSize);
-int sendServerMsg(int *sock, char *clientResponse, size_t responseSize);
+int receiveServerMsg(int *sock, char *serverResponse);
+int sendServerMsg(int *sock, char *clientResponse);
 int main(int argc, char *argv[])
 {
     strcpy(name, argv[1]);
@@ -59,15 +59,15 @@ int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
     else
     {
         // char name[] = "name1";
-        sendServerMsg(sock, name, sizeof(name));
+        sendServerMsg(sock, name);
     }
     return 0;
 }
-int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
+int receiveServerMsg(int *sock, char *serverResponse)
 {
     int bytes;
 
-    bytes = recv(*sock, serverResponse, responsesize - 1, 0);
+    bytes = recv(*sock, serverResponse, sizeof(serverResponse) - 1, 0);
     if (bytes < 0)
     {
         printf("receive failed");
@@ -77,10 +77,10 @@ int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
     return 0;
 }
 
-int sendServerMsg(int *sock, char *clientResponse, size_t responsesize)
+int sendServerMsg(int *sock, const char *clientResponse)
 {
     size_t sendSize;
-    sendSize = send(*sock, clientResponse, responsesize, 0);
+    sendSize = send(*sock, clientResponse, sizeof(clientResponse), 0);
     if (sendSize < 0)
     {
         printf("failed to send");
