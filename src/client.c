@@ -53,10 +53,7 @@ int main(int argc, char *argv[])
             {
                 printf("Received from server: %s\n", message);
             }
-            else
-            {
-                printf("Failed to receive message.\n");
-            }
+         
         }
     }
     close(g_socket);
