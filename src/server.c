@@ -16,7 +16,7 @@ struct clientInfo
 struct clientInfo players[8];
 int loadPlayers(int *sock);
 int openServer(int *sock, struct sockaddr_in *sin, int *bs);
-int main()
+int main(void)
 {
     int s_socket, bind_socket;
     struct sockaddr_in server_adress;
@@ -65,6 +65,7 @@ int loadPlayers(int *sock)
         int bytes;
 
         bytes = recv(*sock, players[connectedClient].name, sizeof(players[connectedClient].name), 0);
+        printf(players[connectedClient].name);
         connectedClient++;
     }
     printf("all players sucessfully loadedin");
