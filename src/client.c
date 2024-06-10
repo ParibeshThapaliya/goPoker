@@ -20,40 +20,17 @@ int main(int argc, char *argv[])
     int g_socket, connet_status;
     struct sockaddr_in server_adress;
     char message[4096];
-    struct pollfd fds[2];
-
     if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
     {
         printf("failed to initialize connection to the server ");
         return -1;
     }
-    fds[0].fd = g_socket;
-    fds[0].events = POLLIN; // Check for incoming data
-
     while (1)
     {
-        int poll_count = poll(fds, 1, 10000); // Poll with a timeout of 1000ms
 
-        if (poll_count == -1)
+        if (receiveServerMsg(&g_socket, message, sizeof(message)) > 0)
         {
-            printf("Poll error.\n");
-            close(g_socket);
-            return -1;
-        }
-
-        if (poll_count == 0)
-        {
-            printf("Poll timed out, no data received.\n");
-            continue;
-        }
-
-        if (fds[0].revents & POLLIN)
-        {
-            if (receiveServerMsg(&g_socket, message, sizeof(message)) > 0)
-            {
-                printf("Received from server: %s\n", message);
-            }
-         
+            printf("Received from server: %s\n", message);
         }
     }
     close(g_socket);
