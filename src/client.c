@@ -26,7 +26,12 @@ int main(int argc, char *argv[])
     struct sockaddr_in server_adress;
     char message[4096];
     GtkWidget *main_window;
-    init_gui(main_window);
+    gtk_init(argc, argv);
+    main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(main_window), "Poker");
+    gtk_window_set_default_size(GTK_WINDOW(main_window), WINDOW_WIDTH, WINDOW_HEIGHT);
+    gtk_container_set_border_width(GTK_CONTAINER(main_window), 10);
+    g_signal_connect(main_window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     load_image(main_window, "../assets/pokertable.png");
     gtk_widget_show_all(&main_window);
     gtk_main();
