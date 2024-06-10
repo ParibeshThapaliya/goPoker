@@ -77,10 +77,8 @@ int loadPlayers(int *sock)
 }
 void sendMessageToPlayer(int player, const char *msg)
 {
-
     int player_socket = players[player].socket;
-    if (player_socket < 0)
-        int bytes = send(player_socket, msg, strlen(msg), 0);
+    int bytes = send(player_socket, msg, strlen(msg), 0);
     if (bytes < 0)
     {
         printf("Failed to send message to player %d\n", player);
