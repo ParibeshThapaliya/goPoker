@@ -16,12 +16,15 @@ struct clientInfo
 struct clientInfo players[8];
 int loadPlayers(int *sock);
 int openServer(int *sock, struct sockaddr_in *sin, int *bs);
+void sendMessageToPlayer(int player, const char *message);
 int main(void)
 {
     int s_socket, bind_socket;
     struct sockaddr_in server_adress;
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
+    char himsg[] = "hello there player 1";
+    sendMessageToPlayer(1, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
@@ -66,9 +69,24 @@ int loadPlayers(int *sock)
 
         bytes = recv(temp_socket, players[connectedClient].name, sizeof(players[connectedClient].name), 0);
         players[connectedClient].name[bytes] = '\0';
-         printf(players[connectedClient].name);
-        printf("client :%d connected\n", connectedClient + 1);
+        printf(players[connectedClient].name);
+        printf("\nclient :%d connected\n", connectedClient + 1);
         connectedClient++;
     }
-    printf("all players sucessfully loadedin");
+    printf("all players sucessfully loaded in");
+}
+void sendMessageToPlayer(int player, const char *msg)
+{
+
+    int player_socket = players[player].socket;
+    if (player_socket < 0)
+        int bytes = send(player_socket, msg, strlen(msg), 0);
+    if (bytes < 0)
+    {
+        printf("Failed to send message to player %d\n", player);
+    }
+    else
+    {
+        printf("Message sent to player %d: %s\n", player, message);
+    }
 }

@@ -90,7 +90,7 @@ int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
     }
     else
     {
-       // char name[] = "name1";
+        // char name[] = "name1";
         sendServerMsg(sock, name, sizeof(name));
     }
     return 0;
