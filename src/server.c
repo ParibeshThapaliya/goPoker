@@ -24,7 +24,7 @@ int main(void)
     openServer(&s_socket, &server_adress, &bind_socket);
     loadPlayers(&s_socket);
     char himsg[] = "hello there player 1";
-    sendMessageToPlayer(1, himsg);
+    sendMessageToPlayer(0, himsg);
 }
 
 int openServer(int *sock, struct sockaddr_in *sin, int *bs)
