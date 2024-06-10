@@ -71,7 +71,7 @@ int openConnection(int *sock, struct sockaddr_in *sin, int *cs)
 
     sin->sin_family = AF_INET;
     sin->sin_port = htons(9000);
-    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+    sin->sin_addr.s_addr = inet_addr("127.0.0.1");
     if (inet_pton(AF_INET, "127.0.0.1", &(sin->sin_addr)) <= 0)
     {
         printf("wrong adress");
@@ -95,7 +95,8 @@ int receiveServerMsg(int *sock, char *serverResponse, size_t responsesize)
     bytes = recv(sock, serverResponse, responsesize - 1, 0);
     if (bytes < 0)
     {
-        printf("receive failed") return -1;
+        printf("receive failed");
+        return -1;
     }
     serverResponse[bytes] = '\0';
     return 0;
