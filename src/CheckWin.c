@@ -1,7 +1,6 @@
 #include "CheckWin.h"
 #include "GameHandling.h"
 #include "Structures.h"
-#include "constants.h"
 void checkHands(Player playersList[10], Card *boardCards) {
     // This function should evaluate the hands and set the hand type for each player.
     // For simplicity, we'll assume all players have HighCard.
