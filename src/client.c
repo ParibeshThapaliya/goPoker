@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
     gtk_container_set_border_width(GTK_CONTAINER(window), 500);
     load_image(BG, "../assets/pokertable.png");
     button = gtk_button_new_with_label("Click Me!");
-    gtk_container_add(GTK_CONTAINER(window), BG, button);
+    gtk_container_add(GTK_CONTAINER(window), BG);
+    gtk_container_add(GTK_CONTAINER(window), button);
     gtk_widget_show_all(window);
 
     // if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
