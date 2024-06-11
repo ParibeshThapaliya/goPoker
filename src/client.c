@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
     gtk_container_set_border_width(GTK_CONTAINER(window), 500);
-    load_image(BG, "../assets/pokertable.png");
+    BG = gtk_image_new_from_file("../assets/pokertable.png");
     button = gtk_button_new_with_label("Click Me!");
     gtk_container_add(GTK_CONTAINER(window), BG);
     gtk_container_add(GTK_CONTAINER(window), button);
