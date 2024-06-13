@@ -50,19 +50,19 @@ int main(int argc, char *argv[])
 
     button = gtk_button_new_with_label("Click Me!");
 
-    gtk_fixed_put(GTK_FIXED(fixed), BG, 0, 0);         // Adjust coordinates as needed
-    gtk_fixed_put(GTK_FIXED(fixed), button, 350, 250); // Adjust coordinates as needed
+    gtk_fixed_put(GTK_FIXED(fixed), BG, 0, 0);         
+    gtk_fixed_put(GTK_FIXED(fixed), button, 350, 250);
 
     gtk_widget_show_all(window);
-
+   if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
+    {
+        printf("failed to initialize connection to the server ");
+        return -1;
+    }
+    receiveServerMsg(&g_socket, message);
+    printf("Received from server: %s\n", message);
     gtk_main();
-    // if ((connectStatus = openConnection(&g_socket, &server_adress, &connet_status)) != 0)
-    // {
-    //     printf("failed to initialize connection to the server ");
-    //     return -1;
-    // }
-    // receiveServerMsg(&g_socket, message);
-    // printf("Received from server: %s\n", message);
+ 
 
     close(g_socket);
     return 0;
