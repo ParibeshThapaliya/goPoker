@@ -61,7 +61,7 @@ int openServer(int *sock, struct sockaddr_in *sin, int *bs)
 }
 int loadPlayers(int *sock)
 {
-    connectedClient=0;
+    connectedClient = 0;
     while (connectedClient < MAXCLIENT)
     {
         int temp_socket = accept(*sock, NULL, NULL);
@@ -103,5 +103,22 @@ void sendMessageToAllPlayers(char *msg)
     for (int i = 0; i < connectedClient; i++)
     {
         sendMessageToPlayer(i, msg);
+    }
+}
+void waitForPlayerToReconnect(int playerIndex)
+{
+    while (connectedClient < MAXCLIENT)
+    {
+
+        int temp_socket = accept(*sock, NULL, NULL);
+        int bytes;
+        char name[16];
+        name[bytes] = '\0' bytes = recv(temp_socket, name, sizeof(name), 0);
+        if (players[playerIndex].name == name)
+        {
+            players[playerIndex].socket = temp_socket;
+            printf("\nclient :%d sucessfully reconnected connected\n", connectedClient + 1);
+            connectedClient++;
+        }
     }
 }
