@@ -105,7 +105,7 @@ void sendMessageToAllPlayers(char *msg)
         sendMessageToPlayer(i, msg);
     }
 }
-void waitForPlayerToReconnect(int playerIndex)
+void waitForPlayerToReconnect(int playerIndex,int *sock)
 {
     while (connectedClient < MAXCLIENT)
     {
