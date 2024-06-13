@@ -113,7 +113,8 @@ void waitForPlayerToReconnect(int playerIndex)
         int temp_socket = accept(*sock, NULL, NULL);
         int bytes;
         char name[16];
-        name[bytes] = '\0' bytes = recv(temp_socket, name, sizeof(name), 0);
+        name[bytes] = '\0';
+         bytes = recv(temp_socket, name, sizeof(name), 0);
         if (players[playerIndex].name == name)
         {
             players[playerIndex].socket = temp_socket;
